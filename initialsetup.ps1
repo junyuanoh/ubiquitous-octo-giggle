@@ -1,1 +1,1 @@
-write-host "Hello World"
+Install-Module AzureAD
