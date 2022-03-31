@@ -1,6 +1,7 @@
 Write-Host "Starting..."
 Write-Host ""
 Write-Host "Installing AzureAD Module..."
+Write-Host ""
 
 #Check if module is installed & imported, do it if not:
 $module = "AzureAD"
@@ -30,6 +31,10 @@ if((Get-Module -Name $module) -eq $null) {
     }
 };
 
+Write-Host ""
+Write-Host "Installing AzureAD Module..."
+Write-Host ""
+
 #Check if module is installed & imported, do it if not:
 $module = "MSOnline"
 if((Get-Module -Name $module) -eq $null) {
@@ -58,7 +63,10 @@ if((Get-Module -Name $module) -eq $null) {
     }
 };
 Write-Host ""
+Get-InstalledModule
+
+Write-Host ""
 Write-Host "Completed"
 Write-Host ""
-
-Get-InstalledModule
+Write-Host "Opening Exchange Online admin page..."
+Start-Process "https://debug.to"
