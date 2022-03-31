@@ -68,5 +68,6 @@ Get-InstalledModule
 Write-Host ""
 Write-Host "Completed"
 Write-Host ""
-Write-Host "Opening Exchange Online admin page..."
-Start-Process "https://debug.to"
+Write-Host "Installing Exchange Online Powershell Module..."
+
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine
