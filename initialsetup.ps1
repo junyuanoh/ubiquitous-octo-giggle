@@ -1,4 +1,5 @@
-Write-Host "Starting...`n"
+$userUPN = Read-Host "Please enter your work email"
+Write-Host "`nStarting...`n"
 Write-Host "Installing AzureAD Module...`n"
 
 #Check if module is installed & imported, do it if not:
@@ -99,4 +100,4 @@ Write-Host "Setting execution policy to remote signed`n"
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
 Write-Host "`nCompleted`n."
 Import-Module ExchangeOnlineManagement
-Connect-ExchangeOnlineManagement
+Connect-ExchangeOnline -UserPrincipalName $userUPN
