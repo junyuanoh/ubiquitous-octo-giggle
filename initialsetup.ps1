@@ -94,10 +94,8 @@ if((Get-Module -Name $module) -eq $null) {
 
 Write-Host ""
 Get-InstalledModule
-Write-Host "`nCompleted`n"
-
-Write-Host "Setting execution policy to remote signed`n"
+Write-Host "`nSetting execution policy to remote signed`n"
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
-Write-Host "`nCompleted`n."
+Write-Host "Completed`nRunning EXO V2 now..."
 Import-Module ExchangeOnlineManagement
 Connect-ExchangeOnline -UserPrincipalName $userUPN
