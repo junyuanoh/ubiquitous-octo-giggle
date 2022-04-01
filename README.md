@@ -3,4 +3,9 @@ Exchange Online Commands
 
 ## Initial Setup 
 
-1. Invoke-WebRequest -Uri https://github.com/junyuanoh/ubiquitous-octo-giggle.git -OutFile .\initialsetup.ps1
+`
+$ScriptFromGitHub = Invoke-WebRequest https://raw.githubusercontent.com/junyuanoh/ubiquitous-octo-giggle/main/initialsetup.ps1
+Invoke-Expression $($ScriptFromGitHub.Content)
+`
+
+

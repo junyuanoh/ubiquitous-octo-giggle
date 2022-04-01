@@ -1,4 +1,6 @@
-Write-Host "Disables remotePS for a list of user in a .txt file. The text file must contain one account on each line as follows:`nakol@contoso.com`ntjohnston@contoso.com`nkakers@contoso.com`n`n"
+Import-Module ExchangeOnlineManagement
+Connect-ExchangeOnline
+Write-Host "`nDisables remotePS for a list of user in a .txt file. The text file must contain one account on each line as follows:`nakol@contoso.com`ntjohnston@contoso.com`nkakers@contoso.com`n`n"
 $location = Read-Host "Enter .txt file location"
 $lines = Get-Content -Path "$location"
 $NPS = Get-Content "$location"
