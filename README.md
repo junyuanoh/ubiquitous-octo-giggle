@@ -12,6 +12,13 @@ $ScriptFromGitHub = Invoke-WebRequest https://raw.githubusercontent.com/junyuano
 Invoke-Expression $($ScriptFromGitHub.Content)
 `
 
+Now that EXO V2 is installed, you can open a session with the following command: 
+
+`
+Import-Module ExchangeOnlineManagement
+Connect-ExchangeOnline -UserPrincipalName $userUPN
+`
+
 
 
 

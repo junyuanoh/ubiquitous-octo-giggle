@@ -7,3 +7,5 @@ $NPS = Get-Content "$location"
 $NPS | ForEach-Object {Set-User -Identity $_ -RemotePowerShellEnabled $false}
 $NPS | ForEach-Object {Get-User -Identity $_ | Format-List RemotePowerShellEnabled}
 Write-Host "Completed`nRemote PS disabled for $($lines.Count) users."
+
+Remove-PSSession $Session

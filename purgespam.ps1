@@ -41,3 +41,8 @@ Start-ComplianceSearch -Identity "JY (Phish) 9" -Confirm:$false -Force
 $phish10 = Read-Host "Enter phishing email no.10"
 Set-ComplianceSearch -Identity "JY (Phish) 10" -ContentMatchQuery "from=$phish10"
 Start-ComplianceSearch -Identity "JY (Phish) 10" -Confirm:$false -Force
+
+Set-TransportRule "Blacklist email address 7" -from ((Get-TransportRule "Blacklist email address 7").From`
++= "$phish1","$phish2", "$phish3", "$phish4", "$phish5", "$phish6", "$phish7", "$phish8", "$phish9", "$phish10")
+
+Remove-PSSession $Session
