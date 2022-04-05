@@ -2,6 +2,9 @@ Write-Host "`nConnecting to IPPS Session (Security & Compliance)`n"
 $userUPN = Read-Host "Please enter your work email"
 Connect-IPPSSession -UserPrincipalName $userUPN
 
+Write-Host "`n This script will set compliance search to your specified email address,`n run the compliance search, and add it into a mail flow blacklist."
+Write-Host "`nEnter 'Q' to quit`n"
+
 $phish1 = (Read-Host "Enter phishing email no.1").Trim()
 $phish1 = $phish1 -replace "\s", ""
 
