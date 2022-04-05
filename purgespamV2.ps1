@@ -10,11 +10,15 @@ if ($phish1) {
     | Start-ComplianceSearch -Identity "Phish Mail (JY)" -Confirm:$false -Force
     break
 }
+elseif ($phish1 = "Q") {
+    Write-Host "Ending session..."
+    Get-PSSession | Remove-PSSession
+    break
+}
 else {
     $phish1 = Read-Host "Enter phishing email no.1"
 }
 }
 
-Remove-PSSession $Session
 
 
