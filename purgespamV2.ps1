@@ -21,10 +21,9 @@ while ($true) {
         Write-Host "Starting compliance search and adding email address to blacklist transport rule..."
         Set-ComplianceSearch -Identity "Phish Mail (JY)" -ContentMatchQuery "from=$phish1"
         Start-ComplianceSearch -Identity "Phish Mail (JY)" -Confirm:$false -Force
-        Set-TransportRule "Blacklist email address 7" -from ((Get-TransportRule "Blacklist email address 7").From += "$phish1")
         break
     }
-}
+} 
 
 $phish2 = (Read-Host "Enter phishing email no.2").Trim()
 $phish2 = $phish2 -replace "\s", ""
@@ -42,7 +41,6 @@ while ($true) {
         Write-Host "Starting compliance search and adding email address to blacklist transport rule..."
         Set-ComplianceSearch -Identity "JY (Phish) 2" -ContentMatchQuery "from=$phish2"
         Start-ComplianceSearch -Identity "JY (Phish) 2" -Confirm:$false -Force
-        Set-TransportRule "Blacklist email address 7" -from ((Get-TransportRule "Blacklist email address 7").From += "$phish2")
         break
     }
 }
@@ -63,7 +61,6 @@ while ($true) {
         Write-Host "Starting compliance search and adding email address to blacklist transport rule..."
         Set-ComplianceSearch -Identity "JY (Phish) 3" -ContentMatchQuery "from=$phish3"
         Start-ComplianceSearch -Identity "JY (Phish) 3" -Confirm:$false -Force
-        Set-TransportRule "Blacklist email address 7" -from ((Get-TransportRule "Blacklist email address 7").From += "$phish3")
         break
     }
 }
@@ -84,7 +81,6 @@ while ($true) {
         Write-Host "Starting compliance search and adding email address to blacklist transport rule..."
         Set-ComplianceSearch -Identity "JY (Phish) 4" -ContentMatchQuery "from=$phish4"
         Start-ComplianceSearch -Identity "JY (Phish) 4" -Confirm:$false -Force
-        Set-TransportRule "Blacklist email address 7" -from ((Get-TransportRule "Blacklist email address 7").From += "$phish4")
         break
     }
 }
@@ -105,7 +101,6 @@ while ($true) {
         Write-Host "Starting compliance search and adding email address to blacklist transport rule..."
         Set-ComplianceSearch -Identity "JY (Phish) 5" -ContentMatchQuery "from=$phish5"
         Start-ComplianceSearch -Identity "JY (Phish) 5" -Confirm:$false -Force
-        Set-TransportRule "Blacklist email address 7" -from ((Get-TransportRule "Blacklist email address 7").From += "$phish5")
         break
     }
 }
@@ -126,7 +121,6 @@ while ($true) {
         Write-Host "Starting compliance search and adding email address to blacklist transport rule..."
         Set-ComplianceSearch -Identity "JY (Phish) 6" -ContentMatchQuery "from=$phish6"
         Start-ComplianceSearch -Identity "JY (Phish) 6" -Confirm:$false -Force
-        Set-TransportRule "Blacklist email address 7" -from ((Get-TransportRule "Blacklist email address 7").From += "$phish6")
         break
     }
 }
@@ -147,7 +141,6 @@ while ($true) {
         Write-Host "Starting compliance search and adding email address to blacklist transport rule..."
         Set-ComplianceSearch -Identity "JY (Phish) 7" -ContentMatchQuery "from=$phish7"
         Start-ComplianceSearch -Identity "JY (Phish) 7" -Confirm:$false -Force
-        Set-TransportRule "Blacklist email address 7" -from ((Get-TransportRule "Blacklist email address 7").From += "$phish7")
         break
     }
 }
@@ -168,7 +161,6 @@ while ($true) {
         Write-Host "Starting compliance search and adding email address to blacklist transport rule..."
         Set-ComplianceSearch -Identity "JY (Phish) 8" -ContentMatchQuery "from=$phish8"
         Start-ComplianceSearch -Identity "JY (Phish) 8" -Confirm:$false -Force
-        Set-TransportRule "Blacklist email address 7" -from ((Get-TransportRule "Blacklist email address 7").From += "$phish8")
         break
     }
 }
@@ -189,7 +181,6 @@ while ($true) {
         Write-Host "Starting compliance search and adding email address to blacklist transport rule..."
         Set-ComplianceSearch -Identity "JY (Phish) 9" -ContentMatchQuery "from=$phish9"
         Start-ComplianceSearch -Identity "JY (Phish) 9" -Confirm:$false -Force
-        Set-TransportRule "Blacklist email address 7" -from ((Get-TransportRule "Blacklist email address 7").From += "$phish9")
         break
     }
 }
@@ -210,10 +201,21 @@ while ($true) {
         Write-Host "Starting compliance search and adding email address to blacklist transport rule..."
         Set-ComplianceSearch -Identity "JY (Phish) 10" -ContentMatchQuery "from=$phish10"
         Start-ComplianceSearch -Identity "JY (Phish) 10" -Confirm:$false -Force
-        Set-TransportRule "Blacklist email address 7" -from ((Get-TransportRule "Blacklist email address 7").From += "$phish10")
         break
     }
 }
+
+Set-TransportRule "Blacklist email address 7" -from ((Get-TransportRule "Blacklist email address 7").From += "$phish1")
+Set-TransportRule "Blacklist email address 7" -from ((Get-TransportRule "Blacklist email address 7").From += "$phish2")
+Set-TransportRule "Blacklist email address 7" -from ((Get-TransportRule "Blacklist email address 7").From += "$phish3")
+Set-TransportRule "Blacklist email address 7" -from ((Get-TransportRule "Blacklist email address 7").From += "$phish4")
+Set-TransportRule "Blacklist email address 7" -from ((Get-TransportRule "Blacklist email address 7").From += "$phish5")
+Set-TransportRule "Blacklist email address 7" -from ((Get-TransportRule "Blacklist email address 7").From += "$phish6")
+Set-TransportRule "Blacklist email address 7" -from ((Get-TransportRule "Blacklist email address 7").From += "$phish7")
+Set-TransportRule "Blacklist email address 7" -from ((Get-TransportRule "Blacklist email address 7").From += "$phish8")
+Set-TransportRule "Blacklist email address 7" -from ((Get-TransportRule "Blacklist email address 7").From += "$phish9")
+Set-TransportRule "Blacklist email address 7" -from ((Get-TransportRule "Blacklist email address 7").From += "$phish10")
+
 
 Write-Host "Completed.`nEnding session..."
 Remove-PSSession $Session
