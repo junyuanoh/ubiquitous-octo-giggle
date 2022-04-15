@@ -1,4 +1,3 @@
-$Credentials = Read-Host "Please enter your work email"
 Connect-MsolService -Credential $Credentials
 $users = Import-Csv .\Users-to-disable.csv
  
