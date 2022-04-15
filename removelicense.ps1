@@ -1,5 +1,5 @@
 Connect-MsolService 
-$csvloc = Read-Host "Enter path to CSB" 
+$csvloc = Read-Host "Enter path to .csv" 
 $users = Import-Csv $csvloc
  
 foreach ($user in $users) {
