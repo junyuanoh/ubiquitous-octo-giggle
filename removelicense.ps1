@@ -1,5 +1,6 @@
-Connect-MsolService -Credential $Credentials
-$users = Import-Csv .\Users-to-disable.csv
+Connect-MsolService 
+$csvloc = Read-Host "Enter path to CSB" 
+$users = Import-Csv $csvloc
  
 foreach ($user in $users) {
 Write-Verbose "Processing licenses for user $($user.UserPrincipalName)"
