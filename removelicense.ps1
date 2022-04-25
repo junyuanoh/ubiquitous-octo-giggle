@@ -1,4 +1,10 @@
+
 Connect-MsolService 
+
+Get-MsolAccountSku
+
+
+
 $csvloc = Read-Host "Enter path to .csv" 
 $users = Import-Csv $csvloc
  
@@ -22,3 +28,5 @@ continue
 }
 }
 }
+
+
