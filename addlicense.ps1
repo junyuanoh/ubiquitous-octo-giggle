@@ -1,5 +1,4 @@
-$msolcred = get-credential
-Connect-MsolService -credential $msolcred
+Connect-MsolService 
 $csvloc = Read-Host "Enter path to .csv" 
 $users = Import-Csv $csvloc
 $SKU = Read-Host "Enter SKU Name (example: TenantName:LicenseName)"
