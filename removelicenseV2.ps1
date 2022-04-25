@@ -5,6 +5,6 @@ $SKU = Read-Host "Enter SKU Name (example: TenantName:LicenseName)"
  
 foreach($user in $users) {
     $upn = $user.UserPrincipalName 
-    Set-MsolUserLicense -UserPrincipalName $upn -AddLicenses $SKU
+    Set-MsolUserLicense -UserPrincipalName $upn -RemoveLicenses $SKU
     Get-MsolUser -UserPrincipalName $upn | Format-List Licenses, UserPrincipalName
 }
