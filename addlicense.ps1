@@ -1,15 +1,14 @@
-Connect-MsolService 
-Get-MsolAccountSku
-
+$msolcred = get-credential
+Connect-MsolService -credential $msolcred
 $csvloc = Read-Host "Enter path to .csv" 
 $users = Import-Csv $csvloc
-$SKU = Read-Host "Enter SKU Name (example: TenantName:LicenseName):"
+$SKU = Read-Host "Enter SKU Name (example: TenantName:LicenseName)"
  
 foreach($user in $users) {
     $upn = $user.UserPrincipalName 
     Set-MsolUserLicense -UserPrincipalName $upn -AddLicenses $SKU
-    Write-Host "$SKU successfully assigned to $upn"
-    Get-MsolUser -UserPrincipalName $upn | Format-List Licenses
+    Write-Host "'$SKU' successfully assigned to $upn."
+    Get-MsolUser -UserPrincipalName $upn | Format-List Licenses, UserPrincipalName
 }
 
 
