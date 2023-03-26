@@ -1,0 +1,10 @@
+Import-Module ExchangeOnlineManagement
+Connect-ExchangeOnline 
+$csvloc = Read-Host "Enter path to .csv" 
+$users = Import-Csv $csvloc
+
+foreach ($user in $users) {
+    $upn = $user.UserPrincipalName
+    Set-UnifiedGroup $upn -UnifiedGroupWelcomeMessageEnabled:$false
+    Get-UnifiedGroup -identity $upn | FL WelcomeMessageEnabled, DisplayName
+}
