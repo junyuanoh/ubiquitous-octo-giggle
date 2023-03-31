@@ -22,7 +22,7 @@ $csvloc2 = $csvloc1.Replace("`"","")
 $users = Import-Csv $csvloc2
 $SKU = Read-Host "License [Kiosk/E1/E3] (case-insensitive)"
 $today = todaydate
-$var_password = -join("SATS@",$today) 
+$var = -join("SATS@",$today) 
 
 If($SKU -eq "Kiosk"){
     Import-Module MSOnline
@@ -39,7 +39,7 @@ If($SKU -eq "Kiosk"){
         $st.State = "Enabled"
         $sta = @($st)
         Set-MsolUser -UserPrincipalName $user.UserPrincipalName -StrongAuthenticationRequirements $sta
-        Set-MsolUserPassword -UserPrincipalName $upn -NewPassword $var_password
+        Set-MsolUserPassword -UserPrincipalName $upn -NewPassword $var
         $mfauser = Get-MSolUser -UserPrincipalName $upn
         $mfauser.StrongAuthenticationMethods
         Write-Host "$SKU license assigned and MFA enabled for $upn"
@@ -64,7 +64,7 @@ If($SKU -eq "Kiosk"){
             $thedisplayname = $theuser.displayname
             $thewin2k = $theuser.UserPrincipalName.trimend('@sats.com.sg')
             $theemail = $theuser.UserPrincipalName
-            $message = "`n`nHi SMITH,`n`nThe new account for new staff has been created, assigned $SKU license and enabled MFA.`n`nFull Name: $thedisplayname`nWin2K: $thewin2k`nWin2K Password: $var_password`nEmail: $theemail`nEmail Password: $var_password`n`nPlease advise the users to reset their Win2K password after their first login using this link: https://saml.sats.com.sg/adfs/portal/updatepassword`nYou can set up and change your OWA password via this link: https://www.office.com/`n`nI will now proceed to close the ticket as the request has been fulfilled."
+            $message = "`n`nHi SMITH,`n`nThe new account for new staff has been created, assigned $SKU license and enabled MFA.`n`nFull Name: $thedisplayname`nWin2K: $thewin2k`nWin2K Password: $var`nEmail: $theemail`nEmail Password: $var`n`nPlease advise the users to reset their Win2K password after their first login using this link: https://saml.sats.com.sg/adfs/portal/updatepassword`nYou can set up and change your OWA password via this link: https://www.office.com/`n`nI will now proceed to close the ticket as the request has been fulfilled."
             Write-Host $message
         }
     }
@@ -92,7 +92,7 @@ elseif($SKU -eq "E1"){
         $st.State = "Enabled"
         $sta = @($st)
         Set-MsolUser -UserPrincipalName $user.UserPrincipalName -StrongAuthenticationRequirements $sta
-        Set-MsolUserPassword -UserPrincipalName $upn -NewPassword $var_password
+        Set-MsolUserPassword -UserPrincipalName $upn -NewPassword $var
         $mfauser = Get-MSolUser -UserPrincipalName $upn
         $mfauser.StrongAuthenticationMethods
         Write-Host "$SKU license assigned and MFA enabled for $upn"
@@ -116,7 +116,7 @@ elseif($SKU -eq "E1"){
             $thedisplayname = $theuser.displayname
             $thewin2k = $theuser.UserPrincipalName.trimend('@sats.com.sg')
             $theemail = $theuser.UserPrincipalName
-            $message = "`n`nHi SMITH,`n`nThe new account for new staff has been created, assigned $SKU license and enabled MFA.`n`nFull Name: $thedisplayname`nWin2K: $thewin2k`nWin2K Password: $var_password`nEmail: $theemail`nEmail Password: $var_password`n`nPlease advise the users to reset their Win2K password after their first login using this link: https://saml.sats.com.sg/adfs/portal/updatepassword`nYou can set up and change your OWA password via this link: https://www.office.com/`n`nI will now proceed to close the ticket as the request has been fulfilled."
+            $message = "`n`nHi SMITH,`n`nThe new account for new staff has been created, assigned $SKU license and enabled MFA.`n`nFull Name: $thedisplayname`nWin2K: $thewin2k`nWin2K Password: $var`nEmail: $theemail`nEmail Password: $var`n`nPlease advise the users to reset their Win2K password after their first login using this link: https://saml.sats.com.sg/adfs/portal/updatepassword`nYou can set up and change your OWA password via this link: https://www.office.com/`n`nI will now proceed to close the ticket as the request has been fulfilled."
             Write-Host $message
         }
     }
@@ -143,7 +143,7 @@ elseif($SKU -eq "E3"){
         $st.State = "Enabled"
         $sta = @($st)
         Set-MsolUser -UserPrincipalName $user.UserPrincipalName -StrongAuthenticationRequirements $sta
-        Set-MsolUserPassword -UserPrincipalName $upn -NewPassword $var_password
+        Set-MsolUserPassword -UserPrincipalName $upn -NewPassword $var
         $mfauser = Get-MSolUser -UserPrincipalName $upn
         $mfauser.StrongAuthenticationMethods
         Write-Host "$SKU license assigned and MFA enabled for $upn"
@@ -168,7 +168,7 @@ elseif($SKU -eq "E3"){
             $thedisplayname = $theuser.displayname
             $thewin2k = $theuser.UserPrincipalName.trimend('@sats.com.sg')
             $theemail = $theuser.UserPrincipalName
-            $message = "`n`nHi SMITH,`n`nThe new account for new staff has been created, assigned $SKU license and enabled MFA.`n`nFull Name: $thedisplayname`nWin2K: $thewin2k`nWin2K Password: $var_password`nEmail: $theemail`nEmail Password: $var_password`n`nPlease advise the users to reset their Win2K password after their first login using this link: https://saml.sats.com.sg/adfs/portal/updatepassword`nYou can set up and change your OWA password via this link: https://www.office.com/`n`nI will now proceed to close the ticket as the request has been fulfilled."
+            $message = "`n`nHi SMITH,`n`nThe new account for new staff has been created, assigned $SKU license and enabled MFA.`n`nFull Name: $thedisplayname`nWin2K: $thewin2k`nWin2K Password: $var`nEmail: $theemail`nEmail Password: $var`n`nPlease advise the users to reset their Win2K password after their first login using this link: https://saml.sats.com.sg/adfs/portal/updatepassword`nYou can set up and change your OWA password via this link: https://www.office.com/`n`nI will now proceed to close the ticket as the request has been fulfilled."
             Write-Host $message
         }
     }

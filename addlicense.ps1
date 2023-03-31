@@ -22,7 +22,7 @@ $csvloc2 = $csvloc1.Replace("`"","")
 $users = Import-Csv $csvloc2
 $SKU = Read-Host "Choose Kiosk, E1, or E3 (case-insensitive)"
 $today = todaydate
-$var_password = -join("S@TS@",$today) 
+$var = -join("S@TS@",$today) 
 
 If($SKU -eq "Kiosk"){
     Import-Module MSOnline
@@ -39,7 +39,7 @@ If($SKU -eq "Kiosk"){
         $st.State = "Enabled"
         $sta = @($st)
         Set-MsolUser -UserPrincipalName $user.UserPrincipalName -StrongAuthenticationRequirements $sta
-        Set-MsolUserPassword -UserPrincipalName $upn -NewPassword $var_password
+        Set-MsolUserPassword -UserPrincipalName $upn -NewPassword $var
         $mfauser = Get-MSolUser -UserPrincipalName $upn
         $mfauser.StrongAuthenticationMethods
         Write-Host "$SKU license assigned and MFA enabled for $upn"
@@ -73,7 +73,7 @@ elseif($SKU -eq "E1"){
         $st.State = "Enabled"
         $sta = @($st)
         Set-MsolUser -UserPrincipalName $user.UserPrincipalName -StrongAuthenticationRequirements $sta
-        Set-MsolUserPassword -UserPrincipalName $upn -NewPassword $var_password
+        Set-MsolUserPassword -UserPrincipalName $upn -NewPassword $var
         $mfauser = Get-MSolUser -UserPrincipalName $upn
         $mfauser.StrongAuthenticationMethods
         Write-Host "$SKU license assigned and MFA enabled for $upn"
@@ -105,7 +105,7 @@ elseif($SKU -eq "E3"){
         $st.State = "Enabled"
         $sta = @($st)
         Set-MsolUser -UserPrincipalName $user.UserPrincipalName -StrongAuthenticationRequirements $sta
-        Set-MsolUserPassword -UserPrincipalName $upn -NewPassword $var_password
+        Set-MsolUserPassword -UserPrincipalName $upn -NewPassword $var
         $mfauser = Get-MSolUser -UserPrincipalName $upn
         $mfauser.StrongAuthenticationMethods
         Write-Host "$SKU license assigned and MFA enabled for $upn"
