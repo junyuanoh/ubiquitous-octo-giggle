@@ -16,5 +16,3 @@ foreach($user in $users) {
     $upn = $user.UserPrincipalName
     Get-Mailbox -Identity $upn | FL UserPrincipalName, LitigationHoldEnabled
 }
-
-Adeline_TanSN@countryfoods.com
