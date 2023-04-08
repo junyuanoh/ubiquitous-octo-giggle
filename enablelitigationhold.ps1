@@ -16,3 +16,25 @@ foreach($user in $users) {
     $upn = $user.UserPrincipalName
     Get-Mailbox -Identity $upn | FL UserPrincipalName, LitigationHoldEnabled
 }
+
+#get litigation hold and export
+Connect-ExchangeOnline -UserPrincipalName satsvn_junyuanoh@sats.com.sg
+$csvloc1 = Read-Host "Enter path to .csv" 
+$csvloc2 = $csvloc1.Replace("`"","")
+$users = Import-Csv $csvloc2
+foreach ($user in $users) {
+    $upn = $user.UserPrincipalName
+    Get-Mailbox -Identity $upn | Select-Object UserPrincipalName, LitigationHoldEnabled | Export-Csv -Path "\\Mac\Home\Desktop\TestCSV\test9.csv" -NoTypeInformation -Append
+}
+
+#set litigation hold only
+Connect-ExchangeOnline -UserPrincipalName satsvn_junyuanoh@sats.com.sg
+$csvloc1 = Read-Host "Enter path to .csv (remove quotes)" 
+$csvloc2 = $csvloc1.Replace("`"","")
+$users = Import-Csv $csvloc2 
+foreach($user in $users) {
+    $upn = $user.UserPrincipalName
+    Set-Mailbox $upn -LitigationHoldEnabled $true
+    Get-Mailbox -Identity $upn | FL UserPrincipalName, LitigationHoldEnabled
+}
+
