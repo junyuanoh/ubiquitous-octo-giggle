@@ -24,7 +24,7 @@ $csvloc2 = $csvloc1.Replace("`"","")
 $users = Import-Csv $csvloc2
 foreach ($user in $users) {
     $upn = $user.UserPrincipalName
-    Get-Mailbox -Identity $upn | Select-Object UserPrincipalName, LitigationHoldEnabled | Export-Csv -Path "\\Mac\Home\Desktop\TestCSV\litigationhold_09-04.csv" -NoTypeInformation -Append
+    Get-Mailbox -Identity $upn | Select-Object UserPrincipalName, LitigationHoldEnabled | Export-Csv -Path "\\Mac\Home\Desktop\TestCSV\litigationhold_02-05.csv" -NoTypeInformation -Append
 }
 
 #set litigation hold only
