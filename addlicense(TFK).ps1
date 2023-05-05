@@ -13,16 +13,11 @@ Function Start-Countdown{
     Write-Progress -Id 1 -Activity $Message -Status "Completed" -PercentComplete 100 -Completed
 }
 
-Function todaydate {
-    Get-Date -Format "ddMMyyyy"
-}
-
 $csvloc1 = Read-Host "Enter path to .csv (accepts with or without quotes)" 
 $csvloc2 = $csvloc1.Replace("`"","")
 $users = Import-Csv $csvloc2
 $SKU = Read-Host "License [Kiosk/E1/E3] (case-insensitive)"
-$today = todaydate
-$var = -join("SATS@",$today) 
+$var = "S@TSTFK@123456!"
 
 If($SKU -eq "Kiosk"){
     Import-Module MSOnline
@@ -30,7 +25,7 @@ If($SKU -eq "Kiosk"){
         $oldupn = $user.oldUserPrincipalName
         $upn = $user.UserPrincipalName
         Set-MsolUserPrincipalName -UserPrincipalName $oldupn -NewUserPrincipalName $upn
-        Start-Countdown -Seconds 3 -Message "Wait 3 seconds before next user..."
+        Start-Countdown -Seconds 5 -Message "Wait 5 seconds before next user..."
         Set-MsolUser -UserPrincipalName $upn -UsageLocation "SG"
         Set-MsolUserLicense -UserPrincipalName $upn -AddLicenses "SATS1:EXCHANGEDESKLESS" 
         Set-MsolUserLicense -UserPrincipalName $upn -AddLicenses "SATS1:POWER_BI_STANDARD" 
@@ -51,7 +46,7 @@ If($SKU -eq "Kiosk"){
     Import-Module ExchangeOnlineManagement
     foreach ($user in $users){
         $upn = $user.UserPrincipalName
-        Start-Countdown -Seconds 3 -Message "Wait 3 seconds before next user..."
+        Start-Countdown -Seconds 5 -Message "Wait 5 seconds before next user..."
         Set-Mailbox -Identity $upn -RoleAssignmentPolicy "DenyForwardingRoleAssignmentPolicy" -Confirm:$false
         Set-User -Identity $upn -RemotePowerShellEnabled $false -Confirm:$false
         Get-Mailbox -Identity $upn | FT UserPrincipalName, RoleAssignmentPolicy
@@ -84,11 +79,10 @@ elseif($SKU -eq "E1"){
         $oldupn = $user.oldUserPrincipalName
         $upn = $user.UserPrincipalName
         Set-MsolUserPrincipalName -UserPrincipalName $oldupn -NewUserPrincipalName $upn
-        Start-Countdown -Seconds 3 -Message "Wait 3 seconds before next user..."
+        Start-Countdown -Seconds 5 -Message "Wait 5 seconds before next user..."
         Set-MsolUser -UserPrincipalName $upn -UsageLocation "SG"
         Set-MsolUserLicense -UserPrincipalName $upn -AddLicenses "SATS1:STANDARDPACK" 
         Set-MsolUserLicense -UserPrincipalName $upn -AddLicenses "SATS1:POWER_BI_STANDARD"
-        Set-MsolUserLicense -UserPrincipalName $upn -AddLicenses "SATS1:RIGHTSMANAGEMENT"
         Get-MsolUser -UserPrincipalName $upn | Format-List Licenses, UserPrincipalName, UsageLocation
         $st = New-Object -TypeName Microsoft.Online.Administration.StrongAuthenticationRequirement
         $st.RelyingParty = "*"
@@ -105,7 +99,7 @@ elseif($SKU -eq "E1"){
     Import-Module ExchangeOnlineManagement
     foreach ($user in $users){
         $upn = $user.UserPrincipalName
-        Start-Countdown -Seconds 3 -Message "Wait 3 seconds before next user..."
+        Start-Countdown -Seconds 5 -Message "Wait 5 seconds before next user..."
         Set-Mailbox -Identity $upn -RoleAssignmentPolicy "DenyForwardingRoleAssignmentPolicy" -Confirm:$false
         Set-User -Identity $upn -RemotePowerShellEnabled $false -Confirm:$false
         Get-Mailbox -Identity $upn | FT UserPrincipalName, RoleAssignmentPolicy
@@ -138,7 +132,7 @@ elseif($SKU -eq "E3"){
         $oldupn = $user.oldUserPrincipalName
         $upn = $user.UserPrincipalName
         Set-MsolUserPrincipalName -UserPrincipalName $oldupn -NewUserPrincipalName $upn
-        Start-Countdown -Seconds 3 -Message "Wait 3 seconds before next user..."
+        Start-Countdown -Seconds 5 -Message "Wait 5 seconds before next user..."
         Set-MsolUser -UserPrincipalName $upn -UsageLocation "SG"
         Set-MsolUserLicense -UserPrincipalName $upn -AddLicenses "SATS1:SPE_E3" 
         Set-MsolUserLicense -UserPrincipalName $upn -AddLicenses "SATS1:POWER_BI_STANDARD"
@@ -158,7 +152,7 @@ elseif($SKU -eq "E3"){
     Import-Module ExchangeOnlineManagement
     foreach ($user in $users){
         $upn = $user.UserPrincipalName
-        Start-Countdown -Seconds 3 -Message "Wait 3 seconds before next user..."
+        Start-Countdown -Seconds 5 -Message "Wait 5 seconds before next user..."
         Set-Mailbox -Identity $upn -RoleAssignmentPolicy "DenyForwardingRoleAssignmentPolicy" -Confirm:$false
         Set-User -Identity $upn -RemotePowerShellEnabled $false -Confirm:$false
         Set-Mailbox $upn -LitigationHoldEnabled $true
