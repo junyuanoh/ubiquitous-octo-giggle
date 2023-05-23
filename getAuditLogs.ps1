@@ -6,5 +6,8 @@ $users = Import-Csv $csvloc2
 
 foreach ($user in $users) {
     $upn = $user.UserPrincipalName
-    Get-AzureADAuditDirectoryLogs -Filter "targetResources/any(tr:tr/UserPrincipalName eq '$upn')" | Export-Csv -Path "\\Mac\Home\Desktop\AD Scripts\$upn.csv" -NoTypeInformation
+    Get-AzureADAuditDirectoryLogs -Filter "targetResources/any(tr:tr/UserPrincipalName eq '$upn')" | Export-Csv -Path "\\Mac\Home\Desktop\OutputCSV\INC01451783\$upn.csv" -NoTypeInformation
 }
+
+### 
+

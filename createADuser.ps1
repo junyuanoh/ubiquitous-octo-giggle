@@ -2,7 +2,8 @@
 Import-Module activedirectory
 
 #Store the data from ADUsers.csv in the $ADUsers variable
-$Users = Import-csv C:\Users\satsaa_ad12\Desktop\bulk_import_template.csv
+$csvloc = Read-Host "Enter path to .csv" 
+$Users = Import-Csv $csvloc
 
 #Loop through each row containing user details in the CSV file 
 foreach ($User in $Users) {

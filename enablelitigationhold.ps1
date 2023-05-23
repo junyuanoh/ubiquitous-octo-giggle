@@ -24,7 +24,21 @@ $csvloc2 = $csvloc1.Replace("`"","")
 $users = Import-Csv $csvloc2
 foreach ($user in $users) {
     $upn = $user.UserPrincipalName
-    Get-Mailbox -Identity $upn | Select-Object UserPrincipalName, LitigationHoldEnabled | Export-Csv -Path "\\Mac\Home\Desktop\TestCSV\litigationhold_02-05.csv" -NoTypeInformation -Append
+    Get-Mailbox -Identity $upn | Select-Object UserPrincipalName, LitigationHoldEnabled | Export-Csv -Path "\\Mac\Home\Desktop\OutputCSV\litigationhold_02-05.csv" -NoTypeInformation -Append
+}
+
+#get litigation hold, enabled it, and export
+Connect-ExchangeOnline -UserPrincipalName satsvn_junyuanoh@sats.com.sg
+$csvloc1 = Read-Host "Enter path to .csv" 
+$csvloc2 = $csvloc1.Replace("`"","")
+$users = Import-Csv $csvloc2
+foreach ($user in $users) {
+    $upn = $user.UserPrincipalName
+    $mailbox = Get-Mailbox -Identity $upn
+    If ($mailbox.LitigationHoldEnabled -eq $False){
+        Set-Mailbox $upn -LitigationHoldEnabled $true
+    }
+    Get-Mailbox -Identity $upn | Select-Object UserPrincipalName, LitigationHoldEnabled | Export-Csv -Path "\\Mac\Home\Desktop\OutputCSV\litigationhold_16_05.csv" -NoTypeInformation -Append
 }
 
 #set litigation hold only

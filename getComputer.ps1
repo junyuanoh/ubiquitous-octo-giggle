@@ -19,3 +19,5 @@ foreach ($computer in $computerList) {
 }
 $output | Export-Csv $outputPath -NoTypeInformation
 
+
+Get-ADComputer -Filter * -Properties * | Export-Csv "C:\Users\satsaa_ad12\Desktop\computer_all_2.csv" -NoTypeInformation

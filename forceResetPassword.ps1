@@ -6,7 +6,8 @@ $users = Import-Csv $csvloc2
 
 foreach ($user in $users) {
     $upn = $user.UserPrincipalName
-    Set-MsolUserPassword -UserPrincipalName $upn -ForceChangePasswordOnly $true -ForceChange
+    Set-MsolUserPassword -UserPrincipalName $upn -ForceChangePasswordOnly $true -ForceChangePassword $true
+    Write-Host "Force password reset for $upn"
 }
 
 # force reset + get logs
@@ -33,7 +34,7 @@ $users = Import-Csv $csvloc2
 foreach ($user in $users) {
     $upn = $user.UserPrincipalName
     Start-Countdown -Seconds 5 -Message "Wait 5 seconds before next user..."
-    Set-MsolUserPassword -UserPrincipalName user@domain.com -ForceChangePasswordOnly $true -ForceChange
+    Set-MsolUserPassword -UserPrincipalName $upn -ForceChangePasswordOnly $true -ForceChangePassword $true
     Get-AzureADAuditDirectoryLogs -Filter "targetResources/any(tr:tr/UserPrincipalName eq '$upn')" | Export-Csv -Path "\\Mac\Home\Desktop\AD Scripts\$upn.csv" -NoTypeInformation
 }
 
