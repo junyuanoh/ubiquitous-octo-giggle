@@ -4,9 +4,11 @@ $users = Import-Csv $csvloc
 
 foreach($user in $users) {
     $upn = $user.UserPrincipalName
-    $proxy = $user.EmailAddress
-    Set-ADUser $upn -add @{ProxyAddresses= $proxy}
-    Get-ADUser $upn -Properties ProxyAddresses | select Name, ProxyAddresses
+    $proxy1 = $user.EmailAddress
+    $proxy2 = $user.Alias
+    Set-ADUser -Identity $upn -EmailAddress $proxy1
+    Set-ADUser $upn -replace @{ProxyAddresses= @("SMTP:$proxy1", "smtp:$proxy2")}
+    Get-ADUser $upn -Properties * | select-object Name, ProxyAddresses, EmailAddress
 }
 
 

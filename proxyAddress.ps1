@@ -1,6 +1,6 @@
 #Script to Change the E-mail, Description, and ProxyAddress Attributes: 
-$User = Get-ADUser -Identity "satsvn_junyuanoh"
-Set-ADUser $User -EmailAddress "junyuan@sats.com.sg" -Description "New user description" -Add @{proxyaddresses="SMTP:newemail@domain.com"}
+$User = Get-ADUser -Identity "Nicky_LimEK"
+Set-ADUser $User -EmailAddress "Nicky_LimEK@sats.com.sg" -Description "Modified by: [Jun Yuan, 26-05-2023]" -Set @{proxyaddresses="SMTP:newemail@domain.com"}
 
 #Script to Add User To Group:
 $Group = Get-ADGroup -Identity "GroupName"

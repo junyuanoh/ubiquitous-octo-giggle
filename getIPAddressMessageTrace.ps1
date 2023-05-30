@@ -49,6 +49,7 @@ $results | Export-Csv -Path "\\Mac\Home\Desktop\OutputCSV\ip_result.csv" -NoType
 #Historical Search
 
 # Define the paths to the CSV files
+Connect-ExchangeOnline -UserPrincipalName satsvn_junyuanoh@sats.com.sg
 $emailCsvPath = "\\Mac\Home\Desktop\InputCSV\generaluse.csv"
 $ipCsvPath = "\\Mac\Home\Desktop\InputCSV\generaluse_ipAddress.csv"
 
@@ -96,4 +97,4 @@ foreach ($email in $emailAddresses) {
 $results | Format-Table -AutoSize
 
 # Export the results to a CSV file
-$results | Export-Csv -Path "\\Mac\Home\Desktop\OutputCSV\ip_result_junyuan02.csv" -NoTypeInformation
+$results | Export-Csv -Path "\\Mac\Home\Desktop\OutputCSV\ip_result_29-05-2023.csv" -NoTypeInformation

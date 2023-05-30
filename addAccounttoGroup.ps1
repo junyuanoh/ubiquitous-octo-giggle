@@ -137,9 +137,9 @@ Import-Csv $csvloc | ForEach-Object {
 ###
 
 # Define the input file path and group name
-$csvFilePath = "C:\Users\satsaa_ad12\Desktop\generaluse_samAccountName16000.csv"
+$csvFilePath = "C:\Users\satsaa_ad12\Desktop\generaluse_samAccountNameRemainder.csv"
 $groupName = "MFA_Enable_Group"
-$resultFilePath = "C:\Users\satsaa_ad12\Desktop\mfa_report16000.csv"
+$resultFilePath = "C:\Users\satsaa_ad12\Desktop\mfa_reportRemainder.csv"
 
 # Import the samAccountNames from the input file
 $users = Import-Csv $csvFilePath | Select-Object -ExpandProperty samAccountName
