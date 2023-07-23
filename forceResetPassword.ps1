@@ -1,18 +1,3 @@
-Connect-MsolService
-
-$csvloc1 = Read-Host "Enter path to .csv" 
-$csvloc2 = $csvloc1.Replace("`"","")
-$users = Import-Csv $csvloc2
-
-foreach ($user in $users) {
-    $upn = $user.UserPrincipalName
-    Set-MsolUserPassword -UserPrincipalName $upn -ForceChangePasswordOnly $true -ForceChangePassword $true
-    Write-Host "Force password reset for $upn"
-}
-
-# force reset + get logs
-Connect-AzureAD
-Connect-MsolService
 
 Function Start-Countdown{   
     Param(
@@ -26,6 +11,22 @@ Function Start-Countdown{
     Write-Progress -Id 1 -Activity $Message -Status "Completed" -PercentComplete 100 -Completed
 }
 
+Connect-MsolService
+
+$csvloc1 = Read-Host "Enter path to .csv" 
+$csvloc2 = $csvloc1.Replace("`"","")
+$users = Import-Csv $csvloc2
+
+foreach ($user in $users) {
+    $upn = $user.UserPrincipalName
+    Start-Countdown -Seconds 5 -Message "Wait 5 seconds before next user..."
+    Set-MsolUserPassword -UserPrincipalName $upn -ForceChangePasswordOnly $true -ForceChangePassword $true
+    Write-Host "Force password reset for $upn"
+}
+
+# force reset + get logs
+Connect-AzureAD
+Connect-MsolService
 
 $csvloc1 = Read-Host "Enter path to .csv" 
 $csvloc2 = $csvloc1.Replace("`"","")

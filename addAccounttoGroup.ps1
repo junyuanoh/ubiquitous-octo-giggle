@@ -137,7 +137,7 @@ Import-Csv $csvloc | ForEach-Object {
 ###
 
 # Define the input file path and group name
-$csvFilePath = "C:\Users\satsaa_ad12\Desktop\generaluse_samAccountNameRemainder.csv"
+$csvFilePath = "C:\Users\satsaa_ad01_test\Desktop\generaluse_samAccountName.csv"
 $groupName = "MFA_Enable_Group"
 $resultFilePath = "C:\Users\satsaa_ad12\Desktop\mfa_reportRemainder.csv"
 
@@ -174,6 +174,7 @@ foreach ($user in $users) {
     # Add the result to the results array
     $results += $result
 
+    
     # Write the result to the console
     Write-Host "$($result.samAccountName) - $($result.Action)"
 }

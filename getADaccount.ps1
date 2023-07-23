@@ -10,13 +10,17 @@ $output = @()
 foreach ($user in $userList) {
 
   $adUser = Get-ADUser -Filter "SamAccountName -eq '$($user.SamAccountName)'" `
-    -Properties Enabled, UserPrincipalName, SamAccountName, Description
+    -Properties *
   if ($adUser) {
     $output += [PSCustomObject] @{
       Enabled = $adUser.Enabled
       UserPrincipalName = $adUser.UserPrincipalName
       SamAccountName = $adUser.SamAccountName
       Description = $adUser.Description
+      DisplayName = $adUser.DisplayName
+      FirstName = $adUser.givenName
+      LastName = $aduser.surname
+      FullName = $aduser.name
     }
   }
 }

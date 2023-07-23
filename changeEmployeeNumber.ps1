@@ -21,3 +21,4 @@ foreach ($user in $userList) {
   }
 }
 $output | Export-Csv $outputPath -NoTypeInformation
+  

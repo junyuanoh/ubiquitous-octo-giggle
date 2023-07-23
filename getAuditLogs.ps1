@@ -1,4 +1,3 @@
-Connect-AzureAD
 
 Function Start-Countdown{   
     Param(
@@ -11,6 +10,8 @@ Function Start-Countdown{
     }
     Write-Progress -Id 1 -Activity $Message -Status "Completed" -PercentComplete 100 -Completed
 }
+
+Connect-AzureAD
 
 $csvloc1 = Read-Host "Enter path to .csv" 
 $csvloc2 = $csvloc1.Replace("`"","")

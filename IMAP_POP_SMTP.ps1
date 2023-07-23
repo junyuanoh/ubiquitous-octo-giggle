@@ -12,21 +12,6 @@ foreach($user in $users) {
     New-AzureADUserAppRoleAssignment -ObjectId $usr.ObjectId -PrincipalId $usr.ObjectId -ResourceId $sp.ObjectId -Id $appRole.Id
 }
 
-
-
-$csvloc = Read-Host "Enter path to .csv" 
-$users = Import-Csv $csvloc
-$app_name = Read-Host "Enter app name"
-$app_role_name = "User"
-$sp = Get-AzureADServicePrincipal -Filter "displayName eq '$app_name'"
-$appRole = $sp.AppRoles | Where-Object { $_.DisplayName -eq $app_role_name }
-foreach($user in $users) {
-    $username = $user.UserPrincipalName 
-    $usr = Get-AzureADUser -ObjectId "$username"
-    New-AzureADUserAppRoleAssignment -ObjectId $usr.ObjectId -PrincipalId $usr.ObjectId -ResourceId $sp.ObjectId -Id $appRole.Id
-}
-
-
 # Assign the values to the variables
 $username = "<Your user's UPN>"
 $app_name = "<Your App's display name>"
