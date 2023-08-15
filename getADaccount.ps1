@@ -2,7 +2,7 @@
 Import-Module ActiveDirectory
 
 $csvPath = Read-Host "Enter path to input .csv" 
-$outputPath = Read-Host "Enter path to output .csv" 
+$outputPath = "C:\Users\satsaa_adsupport01\Desktop\eBusiness_user_11-08-2023.csv"
 $userList = Import-Csv $csvPath
 
 # Initialize output array
@@ -13,14 +13,27 @@ foreach ($user in $userList) {
     -Properties *
   if ($adUser) {
     $output += [PSCustomObject] @{
-      Enabled = $adUser.Enabled
+      Enabled           = $adUser.Enabled
+      SamAccountName    = $adUser.SamAccountName
       UserPrincipalName = $adUser.UserPrincipalName
-      SamAccountName = $adUser.SamAccountName
-      Description = $adUser.Description
-      DisplayName = $adUser.DisplayName
-      FirstName = $adUser.givenName
-      LastName = $aduser.surname
-      FullName = $aduser.name
+      EmailAddress      = $adUser.EmailAddress
+      GivenName         = $adUser.GivenName
+      SurName           = $adUser.Surname
+      DisplayName       = $adUser.DisplayName
+      Title             = $adUser.Title
+      Department        = $adUser.Department
+      Company           = $adUser.Company
+      EmployeeNumber    = $adUser.EmployeeNumber
+      Description       = $adUser.Description
+      whenCreated       = $adUser.whenCreated
+      Office            = $adUser.Office
+      HomePhone         = $adUser.HomePhone
+      Fax               = $adUser.Fax
+      IPPhone           = $adUser.ipPhone
+      Pager             = $adUser.pager
+      Mobile            = $adUser.mobile
+      MobilePhone       = $adUser.MobilePhone
+      Country           = $adUser.country
     }
   }
 }

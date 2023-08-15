@@ -22,7 +22,7 @@ foreach ($user in $users) {
     $var_storeid = Get-AzureADUser -Filter "userPrincipalName eq '$upn'"
     $var_objectid = $var_storeid.objectid
     Start-Countdown -Seconds 15 -Message "Wait 15 seconds before next user..."
-    Get-AzureADAuditDirectoryLogs -Filter "targetResources/any(tr:tr/id eq '$var_objectid')" | Export-Csv -Path "\\Mac\Home\Desktop\OutputCSV\INC000023723557\$upn.csv" -NoTypeInformation
+    Get-AzureADAuditDirectoryLogs -Filter "targetResources/any(tr:tr/id eq '$var_objectid')" | Export-Csv -Path "\\Mac\Home\Desktop\OutputCSV\INC000023933493\$upn.csv" -NoTypeInformation
 }
 
 ### 
