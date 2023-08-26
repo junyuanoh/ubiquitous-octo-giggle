@@ -23,7 +23,7 @@ foreach ($user in $users) {
 
 # Replace these variables with your own values
 $csvInputFilePath = Read-Host "Enter path to .csv"   # Path to the CSV file containing SamAccountNames
-$csvOutputFilePath = "C:\Users\satsaa_adsupport01\Desktop\IE_user_28-07-2023.csv"           # Path to the output CSV file to store user properties
+$csvOutputFilePath = "C:\Users\satsaa_adsupport01\Desktop\check_user_21-08-2023.csv"           # Path to the output CSV file to store user properties
 
 # Function to get user properties and export to CSV
 function Export-UserPropertiesToCSV {
