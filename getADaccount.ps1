@@ -2,12 +2,12 @@
 Import-Module ActiveDirectory
 
 $csvPath = Read-Host "Enter path to input .csv" 
-$outputPath = "C:\Users\satsaa_adsupport01\Desktop\SHC_VPN_SAP_user_17-08-2023.csv"
+$outputPath = "C:\Users\satsaa_adsupport01\Desktop\user_31-08-2023.csv"
 $userList = Import-Csv $csvPath
 
 #use 2 lines below to immediately get attributes of a group
-$userList = Get-ADGroupMember -Identity "SG CF All Users Group" | Select SamAccountName
-$outputPath = "C:\Users\satsaa_adsupport01\Desktop\SG CF All Users Group_user_23-08-2023.csv"
+#$userList = Get-ADGroupMember -Identity "SG CF All Users Group" | Select SamAccountName
+#$outputPath = "C:\Users\satsaa_adsupport01\Desktop\SG CF All Users Group_user_23-08-2023.csv"
 
 
 # Initialize output array
