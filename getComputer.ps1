@@ -20,4 +20,4 @@ foreach ($computer in $computerList) {
 $output | Export-Csv $outputPath -NoTypeInformation
 
 
-Get-ADComputer -Filter * -Properties * | Export-Csv "C:\Users\satsaa_ad01_test\Desktop\computer_all_3.csv" -NoTypeInformation
+Get-ADComputer -Filter * -Properties * | Export-Csv "C:\Users\satsaa_adsupport01\Desktop\computers_21082023.csv" -NoTypeInformation
