@@ -1,6 +1,6 @@
 $csvPath = Read-Host "Enter the path to the input CSV file"
 $ouPath = "OU=Disabled,DC=satsnet,DC=com,DC=sg"
-$description = "Disabled by: [Jun Yuan, 30-05-2023, RITM000000090797]"
+$description = "Disabled by: [Jun Yuan, 07-09-2023, RITM000000093864]"
 
 $users = Import-Csv -Path $csvPath
 foreach ($user in $users) {
