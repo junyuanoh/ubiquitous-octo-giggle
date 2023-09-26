@@ -12,7 +12,7 @@ Add-Type -Path "C:\Program Files\Common Files\Microsoft Shared\Web Server Extens
 #Config Parameters
 $SiteURL= "https://servbridge.sharepoint.com/sites/SingtelProject-SATS"
 $ListName = "Documents"
-$CSVPath = "C:\Temp\SingtelProject-SATS_DocumentLibraryRpt_3.csv"
+$CSVPath = "C:\Temp\SingtelProject-SATS_DocumentLibraryRpt_5.csv"
 $BatchSize = 500
   
 #Get Credentials to connect
@@ -49,6 +49,7 @@ Try {
         {
             #Collect data        
             $Data = New-Object PSObject -Property ([Ordered] @{
+                Name = $ListItem.FieldValues.FileLeafRef
                 LastModified = $ListItem.FieldValues.Modified
                 LastModifiedTimestamp = $ListItem.FieldValues.SMLastModifiedDate
                 LastModifiedBy = $ListItem.FieldValues.Editor.Email
