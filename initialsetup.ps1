@@ -356,4 +356,6 @@ Write-Host ""
 Get-InstalledModule
 Write-Host "Module installation completed"
 
-
+#check if winrm is installed and running
+winrm invoke Restore winrm/Config
+winrm quickconfig
