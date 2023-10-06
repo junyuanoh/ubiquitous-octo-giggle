@@ -10,9 +10,9 @@ Add-Type -Path "C:\Program Files\Common Files\Microsoft Shared\Web Server Extens
 [System.Reflection.Assembly]::LoadWithPartialName(“Microsoft.SharePoint.Client.Runtime”)
       
 #Config Parameters
-$SiteURL= "https://servbridge.sharepoint.com/sites/SingtelProject-SATS"
+$SiteURL= "https://servbridge.sharepoint.com/sites/SERVBRIDGEINCORPORATEDPTELTD-SBI_IT"
 $ListName = "Documents"
-$CSVPath = "C:\Temp\SingtelProject-SATS_DocumentLibraryRpt_5.csv"
+$CSVPath = "C:\Temp\SPO_Test6.csv"
 $BatchSize = 500
   
 #Get Credentials to connect
