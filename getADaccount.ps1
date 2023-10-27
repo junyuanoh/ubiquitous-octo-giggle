@@ -2,7 +2,7 @@
 Import-Module ActiveDirectory
 
 $csvPath = Read-Host "Enter path to input .csv" 
-$outputPath = "C:\Users\satsaa_adsupport01\Desktop\user_31-08-2023.csv"
+$outputPath = "C:\Users\satsaa_adsupport01\Desktop\user_26-10-2023.csv"
 $userList = Import-Csv $csvPath
 
 #use 2 lines below to immediately get attributes of a group
@@ -29,6 +29,7 @@ foreach ($user in $userList) {
       Department        = $adUser.Department
       Company           = $adUser.Company
       EmployeeNumber    = $adUser.EmployeeNumber
+      EmployeeType      = $adUser.EmployeeType
       Description       = $adUser.Description
       whenCreated       = $adUser.whenCreated
       Office            = $adUser.Office
