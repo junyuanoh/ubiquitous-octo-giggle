@@ -28,13 +28,9 @@ $myObject = [PSCustomObject]@{
     user               = "-"
     MFAstatus          = "_"
     email              = "-"
-    fido2              = "-"
     app                = "-"
     password           = "-"
     phone              = "-"
-    softwareoath       = "-"
-    tempaccess         = "-"
-    hellobusiness      = "-"
 }
 
 $MFAData=Get-MgUserAuthenticationMethod -UserId $user.UserPrincipalName #-ErrorAction SilentlyContinue
@@ -48,10 +44,6 @@ $myobject.user = $user.UserPrincipalName;
              $myObject.email = $true 
              $myObject.MFAstatus = "Enabled"
           } 
-          "#microsoft.graph.fido2AuthenticationMethod"                   { 
-            $myObject.fido2 = $true 
-            $myObject.MFAstatus = "Enabled"
-          }    
           "#microsoft.graph.microsoftAuthenticatorAuthenticationMethod"  { 
             $myObject.app = $true 
             $myObject.MFAstatus = "Enabled"
@@ -67,19 +59,7 @@ $myobject.user = $user.UserPrincipalName;
            "#microsoft.graph.phoneAuthenticationMethod"  { 
             $myObject.phone = $true 
             $myObject.MFAstatus = "Enabled"
-          }   
-            "#microsoft.graph.softwareOathAuthenticationMethod"  { 
-            $myObject.softwareoath = $true 
-            $myObject.MFAstatus = "Enabled"
-          }           
-            "#microsoft.graph.temporaryAccessPassAuthenticationMethod"  { 
-            $myObject.tempaccess = $true 
-            $myObject.MFAstatus = "Enabled"
-          }           
-            "#microsoft.graph.windowsHelloForBusinessAuthenticationMethod"  { 
-            $myObject.hellobusiness = $true 
-            $myObject.MFAstatus = "Enabled"
-          }                   
+          }                          
         }
     }
 
