@@ -8,7 +8,7 @@ Script by:      activedirectorypro.com
 Instructions:   https://activedirectorypro.com/mfa-status-powershell
 ============================================================================================
 #>
-
+Connect-MgGraph -Scopes "User.Read.All"
 $csvloc1 = Read-Host "Enter path to .csv" 
 $csvloc2 = $csvloc1.Replace("`"","")
 $usersprep = Import-Csv $csvloc2
