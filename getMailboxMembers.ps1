@@ -25,7 +25,7 @@ Connect-ExchangeOnline
 
 # Specify the mailbox you want to retrieve delegated access members for
 $mailbox = Read-Host "Enter mailbox"
-$exportPath = "\\Mac\Home\Desktop\OutputCSV\$mailbox.csv"
+$exportPath = "C:\Temp\$mailbox.csv"
 
 # Get the mailbox permissions
 $permissions = Get-MailboxPermission -Identity $mailbox | Where-Object { $_.AccessRights -like "*FullAccess*" -and $_.IsInherited -eq $false }
