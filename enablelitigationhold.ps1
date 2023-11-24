@@ -37,8 +37,9 @@ foreach ($user in $users) {
     $mailbox = Get-Mailbox -Identity $upn
     If ($mailbox.LitigationHoldEnabled -eq $False){
         Set-Mailbox $upn -LitigationHoldEnabled $true
+        Write-Host "Litigation hold enabled for $upn"
     }
-    Get-Mailbox -Identity $upn | Select-Object UserPrincipalName, LitigationHoldEnabled | Export-Csv -Path "\\Mac\Home\Desktop\OutputCSV\litigationhold_05-09.csv" -NoTypeInformation -Append
+    Get-Mailbox -Identity $upn | Select-Object UserPrincipalName, LitigationHoldEnabled | Export-Csv -Path "C:\Users\Administrator\Desktop\litigationhold_15-11.csv" -NoTypeInformation -Append
 }
 
 #set litigation hold only

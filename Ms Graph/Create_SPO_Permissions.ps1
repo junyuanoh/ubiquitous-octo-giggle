@@ -8,7 +8,7 @@
 Connect-MgGraph -scopes Sites.FullControl.All
 Import-Module Microsoft.Graph.Sites
 
-$siteId = "065da60c-41c7-404c-a690-4863e5469efc"
+$siteId = "ffe7b28d-fbbc-4fdf-975f-b6bad90b9a0f"
 $params = @{
 	roles = @(
 		"write"
