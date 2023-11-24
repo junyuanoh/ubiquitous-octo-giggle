@@ -42,8 +42,8 @@ ForEach ($User in $Users) {
     $Report.Add($ReportLine)
 }
 
-Write-Host "Report is in c:\temp\MFAUsers.csv"
+Write-Host "Report is in c:\temp\MFAUsers_12-10-2023.csv"
 $Report | Select-Object UserPrincipalName, DisplayName, MFAState, MFADefaultMethod, MFAPhoneNumber, PrimarySMTP, Aliases | Sort-Object UserPrincipalName | Out-GridView
-$Report | Sort-Object UserPrincipalName | Export-CSV -Encoding UTF8 -NoTypeInformation "c:\temp\MFAUsers.csv"
+$Report | Sort-Object UserPrincipalName | Export-CSV -Encoding UTF8 -NoTypeInformation "c:\temp\MFAUsers_12-10-2023.csv"
 
 # Resource: https://www.alitajran.com/export-office-365-users-mfa-status-with-powershell/
